@@ -1,4 +1,4 @@
-export MyPyHome="$HOME/python_learn" 
+export MyPyHome="$HOME/python-learn" 
 [[ -d "$MyPyHome" ]] || mkdir -p $MyPyHome
 
 echo '$MyPyHome:'$MyPyHome;
@@ -20,7 +20,13 @@ removepy() {
 	echo "Can not find $MyPyHome/$1"
 }
 
+build() {
+	[[ -d "$MyPyHome/$1" ]] && (py "$MyPyHome/$1/main.py")
+	[[ -d "$MyPyHome/$1" ]] || (echo "$MyPyHome/$1 not found!")
+}
+
 alias rb="source ~/.bashrc"
 alias eb="subl -a ~/.bashrc"
 alias n=newpy
-alias c=removepy
+alias d=removepy
+alias b=build
