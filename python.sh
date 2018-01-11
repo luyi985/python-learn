@@ -8,7 +8,7 @@ subl -a $MyPyHome
 
 newpy() {
 	[[ "$2" == "-f" ]] && (rm -rf $MyPyHome/$1)
-	[[ -d "$MyPyHome/$1" ]] || (echo "Create $MyPyHome/$1"; mkdir -p "$MyPyHome/$1"; touch "$MyPyHome/$1/main.py")
+	[[ -d "$MyPyHome/$1" ]] || (echo "Create $MyPyHome/$1"; mkdir -p "$MyPyHome/$1"; printf "def main():\r\tprint('main function')\rmain()" >> "$MyPyHome/$1/main.py"; build $1)
 	[[ -d "$MyPyHome/$1" ]] && return 0
 	echo "$MyPyHome/$1 already exists"; 
 }
@@ -16,8 +16,6 @@ newpy() {
 removepy() {
 	[[ -d "$MyPyHome/$1" ]] && (rm -rf $MyPyHome/$1)
 	[[ -d "$MyPyHome/$1" ]] || (echo "$MyPyHome/$1 has removed")
-	[[ -d "$MyPyHome/$1" ]] || return 0
-	echo "Can not find $MyPyHome/$1"
 }
 
 build() {
