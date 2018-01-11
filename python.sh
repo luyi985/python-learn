@@ -1,6 +1,7 @@
-export MyPyHome="$HOME/python-learn" 
+export MyPyHome="$HOME/python-learn"
 [[ -d "$MyPyHome" ]] || mkdir -p $MyPyHome
 
+py --version
 echo '$MyPyHome:'$MyPyHome;
 
 cd $MyPyHome
