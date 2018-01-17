@@ -1,4 +1,4 @@
-export MyPyHome="$HOME/python-learn"
+export MyPyHome="$HOME/git/python-learn"
 [[ -d "$MyPyHome" ]] || mkdir -p $MyPyHome
 
 py --version
@@ -24,8 +24,17 @@ build() {
 	[[ -d "$MyPyHome/$1" ]] || (echo "$MyPyHome/$1 not found!")
 }
 
-alias rb="source ~/.bashrc"
-alias eb="subl -a ~/.bashrc"
+function rb() {
+	[ -f ~/.bashrc ] && source ~/.bashrc
+	[ -f ~/.bash_profile ] && source ~/.bash_profile
+}
+
+function eb() {
+	[ -d $MyPyHome ] && subl -a $MyPyHome
+}
+
+alias rb=rb
+alias eb=eb
 alias n=newpy
 alias d=removepy
 alias b=build
