@@ -5,7 +5,7 @@ python3 --version
 echo '$MyPyHome:'$MyPyHome;
 
 cd $MyPyHome
-subl -a $MyPyHome
+cod $MyPyHome || subl -a $MyPyHome
 
 installPack() {
 	[[ -z $1 ]] && "Please tell me a package name to install"
